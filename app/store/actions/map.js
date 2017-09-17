@@ -4,7 +4,7 @@ export const updateMapLocation = (mapLocation) => {
     AsyncStorage.setItem('mapLocation', JSON.stringify(mapLocation), () => {});
 
     return {
-        type: 'update',
+        type: 'UPDATE_MAP_LOCATION',
         mapLocation
     }
 }

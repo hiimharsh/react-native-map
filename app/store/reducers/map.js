@@ -9,7 +9,7 @@ export default function (
     state = initialState, action
 ) {
     switch (action.type) {
-        case 'update':
+        case 'UPDATE_MAP_LOCATION':
             return {
                 mapLoc: action.mapLocation
             }
