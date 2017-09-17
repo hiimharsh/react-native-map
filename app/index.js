@@ -13,6 +13,7 @@ class App extends Component {
 
     this.state = {
       mapLoaded: false,
+      showInfo: false,
       region: {
         latitude: 37.78825,
         longitude: -122.4324,
@@ -38,6 +39,10 @@ class App extends Component {
     this.props.action.updateMapLocation(this.state.region);
   }
 
+  onMarkerPress () {
+    this.setState({showInfo: !this.state.showInfo})
+  }
+
   render () {
     if (!this.state.mapLoaded) {
       return (
@@ -52,7 +57,17 @@ class App extends Component {
           style={styles.map}
           initialRegion={this.state.region}
           onRegionChangeComplete={this.onRegionChangeComplete}>
-          <MapView.Marker coordinate={this.state.region}>
+          <MapView.Marker
+            coordinate={this.state.region}
+            onPress={(coordinate) => this.onMarkerPress(coordinate)}>
+            {
+              this.state.showInfo ?
+              <View style={styles.showInfo}>
+                <Text style={styles.markerText}>{this.state.region.latitude}</Text>
+                <Text style={styles.markerText}>{this.state.region.longitude}</Text>
+              </View> :
+              <View></View>
+            }
             <View style={styles.marker}>
               <View style={styles.pointer}></View>
             </View>
@@ -95,17 +110,35 @@ const styles = StyleSheet.create({
   marker: {
     width: 10,
     height: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    borderWidth: 1,
+    borderColor: '#01A3D3',
+    backgroundColor: 'white',
     borderRadius: 10 / 2
   },
   pointer: {
     width: 5,
     height: 5,
-    margin: 5 / 2,
+    margin: 3 / 2,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#332235',
+    backgroundColor: '#01A3D3',
     borderRadius: 5 / 2,
+  },
+  showInfo: {
+    width: 110,
+    height: 30,
+    backgroundColor: '#01A3D3',
+    position: 'absolute',
+    top: -32,
+    left: -45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 2,
+  },
+  markerText: {
+    color: 'white',
+    fontSize: 9,
+    fontWeight: 'bold',
   },
 });
 
