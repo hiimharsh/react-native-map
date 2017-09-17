@@ -108,17 +108,17 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   marker: {
-    width: 10,
-    height: 10,
+    width: 12,
+    height: 12,
     borderWidth: 1,
     borderColor: '#01A3D3',
     backgroundColor: 'white',
-    borderRadius: 10 / 2
+    borderRadius: 12 / 2
   },
   pointer: {
     width: 5,
     height: 5,
-    margin: 3 / 2,
+    margin: 5 / 2,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#01A3D3',
