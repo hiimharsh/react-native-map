@@ -8,13 +8,17 @@ import * as MapActions from './store/actions/map'
 
 class App extends Component {
 
-  state = {
-    mapLoaded: false,
-    region: {
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
+  constructor (props) {
+    super (props);
+
+    this.state = {
+      mapLoaded: false,
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }
     }
   }
 
